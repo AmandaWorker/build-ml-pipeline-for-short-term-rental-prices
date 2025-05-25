@@ -6,6 +6,8 @@ import argparse
 import logging
 import wandb
 
+import pandas as pd
+
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
@@ -26,12 +28,12 @@ def go(args):
     artifact = run.use_artifact(args.input_artifact)
     artifact_path = artifact.file()
 
-    df = pd.read_parquet(artifact_path)
+    df = pd.read_csv(artifact_path)
 
     # Set min and max price
     logger.info("Setting min and max price")
     min_price = args.min_price
-    max_price = agrs.max_price
+    max_price = args.max_price
     idx = df['price'].between(min_price, max_price)
     df = df[idx].copy()
 
@@ -69,6 +71,27 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "--output_artifact", 
+        type=str,
+        help="Cleaned data",
+        required=True
+    )
+
+    parser.add_argument(
+        "--output_type", 
+        type=str,
+        help="Type for output artifact",
+        required=True
+    )
+
+    parser.add_argument(
+        "--output_description", 
+        type=str,
+        help="Description for output artifact",
+        required=True
+    )
+
+    parser.add_argument(
         "--min_price", 
         type=float,
         help="Minimum value of 'price' column",
@@ -76,7 +99,7 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "--parameter3", 
+        "--max_price", 
         type=float,
         help="Maximum value of 'price' column",
         required=True
