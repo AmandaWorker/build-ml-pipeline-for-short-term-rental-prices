@@ -598,3 +598,9 @@ Please, make sure all steps are using **the same** python version and that you h
 ## License
 
 [License](LICENSE.txt)
+
+## Project Submission
+
+https://wandb.ai/workeramanda-na/nyc_airbnb
+
+https://github.com/AmandaWorker/build-ml-pipeline-for-short-term-rental-prices
