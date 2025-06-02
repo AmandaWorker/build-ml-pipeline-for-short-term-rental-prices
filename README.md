@@ -601,6 +601,6 @@ Please, make sure all steps are using **the same** python version and that you h
 
 ## Project Submission
 
-https://wandb.ai/workeramanda-na/nyc_airbnb
+https://wandb.ai/workeramanda-na/nyc_airbnb_submit
 
 https://github.com/AmandaWorker/build-ml-pipeline-for-short-term-rental-prices
